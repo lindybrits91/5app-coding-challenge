@@ -1,13 +1,22 @@
 /* EXTERNAL PACKAGES */
 const express = require('express');
+const bodyParser = require('body-parser');
+
+/* INTERNAL */
+const filter = require('./filter');
 
 /* VARIABLES */
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
+
+/* MIDDLEWARE */
+app.use(bodyParser.json());
 
 /* API */
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello!' });
+app.post('/', (req, res) => {
+    const data = req.body;
+    const filteredData = filter(data);
+    res.json(filteredData);
 });
 
 /* CREATE WEBSERVER */
