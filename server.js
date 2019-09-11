@@ -14,9 +14,10 @@ app.use(bodyParser.json());
 
 /* API */
 app.post('/', (req, res) => {
-    const data = req.body;
+    console.log('BOOM!');
+    const data = req.body.payload;
     const filteredData = filter(data);
-    res.json(filteredData);
+    res.json({ response: filteredData });
 });
 
 /* CREATE WEBSERVER */
