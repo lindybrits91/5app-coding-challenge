@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 
 /* API */
 app.post('/', (req, res) => {
-    console.log('BOOM!');
     const data = req.body.payload;
     const filteredData = filter(data);
     res.json({ response: filteredData });
